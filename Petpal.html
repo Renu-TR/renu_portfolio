@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetPal Case Study | Petcare in Every Click</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fafafa;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+      scroll-behavior: smooth;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg,  #7262ed 0%, #d0b2f5 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .gradient-text-secondary {
+      background: linear-gradient(135deg, #24183b 0%, #c2e9fb 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .heading {
+      position: relative;
+      display: inline-block;
+    }
+
+    .heading::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #4f3196, #a1c4fd);
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 0.5s ease;
+    }
+
+    .heading:hover::after {
+      transform: scaleX(1);
+    }
+
+    .project-card {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .divider {
+      height: 3px;
+      width: 80px;
+      background: linear-gradient(90deg, #492de7 0%, #FAD0C4 100%);
+    }
+
+    .insight-card {
+      border-left: 5px solid #8e59f1;
+    }
+
+    .problem-card {
+      border-left: 5px solid #483092;
+    }
+
+    .method-card {
+      border-left: 5px solid #b2d8f9;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #b096f1 0%, #beb0e2 100%);
+    }
+
+    .placeholder {
+      background: linear-gradient(145deg, #fff0f0, #fff8f8);
+    }
+
+    .image-hover-wrapper {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .image-hover-wrapper:hover .image-overlay {
+      opacity: 1;
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 0.75rem;
+    }
+    
+    .pet-icon {
+      color: #FF9A9E;
+      margin-right: 12px;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-br from-blue-50 to-blue-50 backdrop-blur-lg rounded-3xl p-8 sm:p-12 md:p-16 mb-12 animate__animated animate__fadeIn">
+      <div class="text-center">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+          <span class="gradient-text">PetPal</span>
+        </h1>
+        <p class="text-xl sm:text-2xl text-blue-700/80 font-medium mb-8">Petcare in Every Click</p>
+
+        <div class="flex flex-wrap justify-center gap-6 sm:gap-10 mt-10">
+          <div class="text-center">
+            <p class="text-sm font-semibold text-blue-700/70 tracking-wider mb-1">DURATION</p>
+            <p class="text-lg font-bold text-blue-900">Ongoing</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm font-semibold text-blue-700/70 tracking-wider mb-1">TARGET</p>
+            <p class="text-lg font-bold text-blue-900">Pet Parents</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm font-semibold text-blue-700/70 tracking-wider mb-1">METHODS</p>
+            <p class="text-lg font-bold text-blue-900">User Research</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm font-semibold text-blue-700/70 tracking-wider mb-1">INTERVIEWS</p>
+            <p class="text-lg font-bold text-blue-900">Multiple Pet Owners</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Introduction -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-12 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-paw pet-icon"></i>
+          Introduction
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <p class="text-gray-600 mb-6">PetPal is a comprehensive digital platform designed to revolutionize pet care by consolidating all essential pet services into one convenient, user-friendly application. It addresses the challenges faced by urban pet owners in accessing quality, reliable pet care services.</p>
+
+      <div class="bg-blue-50 rounded-xl px-6 py-5 mb-8 border-l-4 border-blue-300">
+        <p class="font-semibold text-blue-800 mb-1">Project Vision:</p>
+        <p class="text-gray-700">To create a one-stop solution that provides pet parents with everything they need for their furry family members - from healthcare and grooming to nutrition and boarding - accessible at the tap of a finger.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/Petpal1.jpg" alt="PetPal App Interface" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">PetPal App Interface</span>
+          </div>
+        </div>
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/Petpal2.jpg" alt="Service Booking Flow" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Service Booking Flow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Problem Statement -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-12 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-question-circle pet-icon"></i>
+          Problem Statement
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <p class="text-gray-600 mb-8">Pet parents in urban India struggle to access consolidated, trustworthy services for their pets—ranging from healthcare and grooming to nutrition and staycare. Existing services are fragmented, leading to inconvenience, lack of timely care, and inadequate information for pet well-being.</p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div>
+          <h3 class="text-xl font-bold text-blue-800 mb-4 flex items-center">
+            <i class="fas fa-exclamation-triangle pet-icon"></i>
+            Current Challenges
+          </h3>
+          <div class="bg-white rounded-lg p-4 shadow-xs border border-gray-100">
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+              <li>Using multiple apps and websites for different pet services</li>
+              <li>Uncertainty about service quality and safety during boarding</li>
+              <li>Missed vaccination schedules due to lack of reminders</li>
+              <li>Difficulty finding vetted pet care providers</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-blue-800 mb-4 flex items-center">
+            <i class="fas fa-chart-line pet-icon"></i>
+            Market Opportunity
+          </h3>
+          <div class="bg-white rounded-lg p-4 shadow-xs border border-gray-100">
+            <p class="text-gray-600">India's pet care market was worth ₹29,000 Cr in 2024 (~$3.5B) and is growing at 16-18% annually. Urban pet parents increasingly seek convenience, quality, and digital-first pet care experiences.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-blue-50 rounded-xl px-6 py-5 border-l-4 border-blue-300">
+        <p class="font-semibold text-blue-800 mb-1">Research Insight:</p>
+        <p class="text-gray-700">Through user interviews and surveys, we identified that 78% of pet owners would prefer a single platform for all pet care needs, and 65% have missed important pet care milestones due to lack of reminders.</p>
+      </div>
+    </div>
+
+    <!-- User Persona -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-12 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-user pet-icon"></i>
+          User Persona
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div class="bg-blue-50/70 rounded-xl p-6">
+          <div class="flex items-center mb-3">
+            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+              <i class="fas fa-user text-blue-500"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-blue-800">Roy, Designer at Siemens Bangalore</p>
+              <p class="text-xs text-blue-600">Owns a Labrador named Max (3 years old)</p>
+            </div>
+          </div>
+          
+          <h4 class="text-lg font-bold text-blue-800 mt-4 flex items-center">
+            <i class="fas fa-bullseye mr-2"></i>
+            Goals
+          </h4>
+          <ul class="text-sm text-gray-600 space-y-2 mt-2">
+            <li class="flex items-start">
+              <i class="fas fa-check text-xs text-blue-500 mr-2 mt-1"></i>
+              <span>Easy access to quality grooming and veterinary services</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check text-xs text-blue-500 mr-2 mt-1"></i>
+              <span>Booking for vet consultations and grooming services</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check text-xs text-blue-500 mr-2 mt-1"></i>
+              <span>Personalized nutrition plans</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check text-xs text-blue-500 mr-2 mt-1"></i>
+              <span>Reliable boarding while traveling</span>
+            </li>
+          </ul>
+          
+          <h4 class="text-lg font-bold text-blue-800 mt-6 flex items-center">
+            <i class="fas fa-exclamation-circle mr-2"></i>
+            Pain Points
+          </h4>
+          <ul class="text-sm text-gray-600 space-y-2 mt-2">
+            <li class="flex items-start">
+              <i class="fas fa-times text-xs text-red-400 mr-2 mt-1"></i>
+              <span>Uses multiple apps and websites for different pet services</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-times text-xs text-red-400 mr-2 mt-1"></i>
+              <span>Uncertainty about service quality and safety during boarding</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-times text-xs text-red-400 mr-2 mt-1"></i>
+              <span>Misses vaccination schedules due to lack of reminders</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/Petpal-userpersona.jpg" alt="User Persona Visualization" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">User Persona Visualization</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solution -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-12 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-lightbulb pet-icon"></i>
+          The PetPal Solution
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <p class="text-gray-600 mb-8">PetPal is a one-stop digital platform offering a full suite of services for pet care, designed to address all the pain points identified in our user research.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        <div class="bg-blue-50/70 rounded-xl p-6 hover:shadow-md transition-all duration-300">
+          <div class="text-3xl mb-3 text-blue-500 flex items-center">
+            <i class="fas fa-user-md mr-2"></i>
+            Vet Services
+          </div>
+          <p class="text-sm text-gray-600">Online consultations, clinic visits, vaccination reminders, and healthcare packs with insurance options.</p>
+        </div>
+        <div class="bg-blue-50/70 rounded-xl p-6 hover:shadow-md transition-all duration-300">
+          <div class="text-3xl mb-3 text-blue-500 flex items-center">
+            <i class="fas fa-cut mr-2"></i>
+            Grooming
+          </div>
+          <p class="text-sm text-gray-600">Customizable grooming services with certified professionals, transparent pricing, and at-home options.</p>
+        </div>
+        <div class="bg-yellow-50/70 rounded-xl p-6 hover:shadow-md transition-all duration-300">
+          <div class="text-3xl mb-3 text-yellow-500 flex items-center">
+            <i class="fas fa-home mr-2"></i>
+            Boarding
+          </div>
+          <p class="text-sm text-gray-600">Vetted staycations and pet hotels with real-time updates and safety verification.</p>
+        </div>
+        <div class="bg-purple-50/70 rounded-xl p-6 hover:shadow-md transition-all duration-300">
+          <div class="text-3xl mb-3 text-purple-500 flex items-center">
+            <i class="fas fa-shopping-cart mr-2"></i>
+            Pet Mart
+          </div>
+          <p class="text-sm text-gray-600">Curated selection of food, toys, and accessories with subscription options.</p>
+        </div>
+        <div class="bg-green-50/70 rounded-xl p-6 hover:shadow-md transition-all duration-300">
+          <div class="text-3xl mb-3 text-green-500 flex items-center">
+            <i class="fas fa-utensils mr-2"></i>
+            Nutrition
+          </div>
+          <p class="text-sm text-gray-600">Custom nutrition plans based on breed, age, and health conditions.</p>
+        </div>
+        <div class="bg-indigo-50/70 rounded-xl p-6 hover:shadow-md transition-all duration-300">
+          <div class="text-3xl mb-3 text-indigo-500 flex items-center">
+            <i class="fas fa-robot mr-2"></i>
+            AI Assistant
+          </div>
+          <p class="text-sm text-gray-600">24/7 chatbot for pet care advice, medication reminders, and behavioral tips.</p>
+        </div>
+      </div>
+
+      <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/images/finding1.png" alt="Service Integration" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Service Integration</span>
+          </div>
+        </div>
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/images/finding2.png" alt="User Flow" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">User Flow</span>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <!-- MVP -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-12 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-rocket pet-icon"></i>
+          Minimum Viable Product
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div>
+          <h3 class="text-xl font-bold text-blue-800 mb-4 flex items-center">
+            <i class="fas fa-check-circle pet-icon"></i>
+            MVP Features
+          </h3>
+          <div class="bg-white rounded-lg p-4 shadow-xs border border-gray-100">
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+              <li>User registration & pet profile setup</li>
+              <li>Booking for vet consultations and grooming services</li>
+              <li>Shopping module with limited inventory</li>
+              <li>Push notifications for health check reminders</li>
+              <li>Payment integration for booking and purchases</li>
+              <li>Basic chatbot support for FAQs</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-blue-800 mb-4 flex items-center">
+            <i class="fas fa-chart-pie pet-icon"></i>
+            Revenue Model
+          </h3>
+          <div class="bg-white rounded-lg p-4 shadow-xs border border-gray-100">
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+              <li>Service commission (15-25% per booking)</li>
+              <li>Premium subscription for advanced features</li>
+              <li>E-commerce margins on product sales</li>
+              <li>Affiliate marketing with pet food brands</li>
+              <li>Ad space for related services</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UX Mockup -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-12 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-paint-brush pet-icon"></i>
+          UX Design
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <p class="text-gray-600 mb-8">Designed using Figma, the UX flow prioritizes holistic pet care services with an intuitive interface that makes all features easily discoverable.</p>
+
+      <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/images/ux1.png" alt="Onboarding Flow" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Onboarding Flow</span>
+          </div>
+        </div>
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/images/ux2.png" alt="Service Booking" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Service Booking</span>
+          </div>
+        </div>
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/images/ux3.png" alt="Pet Profile" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Pet Profile</span>
+          </div>
+        </div>
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/images/ux4.png" alt="Marketplace" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Marketplace</span>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="mt-8 text-center">
+        <a href="https://www.figma.com/proto/QegoR5ECjM3jwLX3FQivmZ/Petpal-UIscreens?node-id=1-1841&p=f&t=HPveZ4QpakjGT3Vd-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-500 text-white rounded-full font-medium shadow-lg transform transition-all hover:scale-105 hover:shadow-xl" target="_blank">
+          <i class="fab fa-figma mr-2"></i>
+          View Design Prototype
+        </a>
+      </div>
+    </div>
+
+    <!-- Market Fit -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-chart-line pet-icon"></i>
+          Market Fit & Potential
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div class="bg-blue-100 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold gradient-text mb-2">26.7%</div>
+          <p class="text-sm text-gray-700">Pet Healthcare Margin</p>
+        </div>
+        <div class="bg-blue-100 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold gradient-text-secondary mb-2">24.1%</div>
+          <p class="text-sm text-gray-700">Pet Food Margin</p>
+        </div>
+        <div class="bg-purple-100 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold text-purple-600 mb-2">24.1%</div>
+          <p class="text-sm text-gray-700">Grooming Margin</p>
+        </div>
+        <div class="bg-green-100 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold text-green-600 mb-2">16%</div>
+          <p class="text-sm text-gray-700">Accessories Margin</p>
+        </div>
+      </div>
+
+      <div class="bg-blue-50 rounded-xl px-6 py-5">
+        <p class="font-semibold text-blue-800 mb-1">Unique Value Proposition:</p>
+        <p class="text-gray-700">Unlike single-service platforms, PetPal brings all essential services under one roof—personalized, trusted, and scalable. The platform taps into direct sales, service commissions, subscriptions, affiliate marketing, and ad space for multiple revenue streams.</p>
+      </div>
+    </div>
+
+      <div class="grid grid-cols-1 gap-6">
+  <div class="flex justify-center items-center">
+    <div class="image-hover-wrapper rounded-xl overflow-hidden">
+      <img src="./assets/images/Petpal-3.jpg" alt="PetPal App Interface" class="h-auto w-auto max-w-full rounded-xl">
+      <div class="image-overlay flex items-center justify-center">
+        <span class="text-white text-lg font-semibold">PetPal App Interface</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Call to Action -->
+        <div class="mt-8 text-center">
+            
+                <a href="index.html" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-500 text-white rounded-full font-medium shadow-lg transform transition-all hover:scale-105 hover:shadow-xl">
+                    Back to Projects
+                </a>
+            </div>
+
+  </div>
+
+  <script>
+    // Simple animation for headings
+    document.querySelectorAll('.heading').forEach(heading => {
+      heading.addEventListener('mouseenter', () => {
+        heading.style.transform = 'translateY(-2px)';
+      });
+      heading.addEventListener('mouseleave', () => {
+        heading.style.transform = '';
+      });
+    });
+    
+    // Fade in animation for cards
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach((card, index) => {
+      card.style.transitionDelay = `${index * 0.1}s`;
+    });
+  </script>
+</body>
+</html>

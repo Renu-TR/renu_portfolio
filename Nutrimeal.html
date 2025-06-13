@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutrimeal | Family meal planner</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fafafa;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+      scroll-behavior: smooth;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg,  #4c4cf0 0%, #d0b2f5 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .gradient-text-secondary {
+      background: linear-gradient(135deg, #56CCF2 0%, #2F80ED 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .heading {
+      position: relative;
+      display: inline-block;
+    }
+
+    .heading::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #FF9A9E, #a1c4fd);
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 0.5s ease;
+    }
+
+    .heading:hover::after {
+      transform: scaleX(1);
+    }
+
+    .project-card {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .divider {
+      height: 3px;
+      width: 80px;
+      background: linear-gradient(90deg, #FF512F 0%, #F09819 100%);
+    }
+
+    .insight-card {
+      border-left: 5px solid #FF9A9E;
+    }
+
+    .problem-card {
+      border-left: 5px solid #f9b2b2;
+    }
+
+    .method-card {
+      border-left: 5px solid #b2d8f9;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #FF9A9E 0%, #FAD0C4 100%);
+    }
+
+    .placeholder {
+      background: linear-gradient(145deg, #fff0f0, #fff8f8);
+    }
+
+    .image-hover-wrapper {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .image-hover-wrapper:hover .image-overlay {
+      opacity: 1;
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 0.75rem;
+    }
+    
+    .pet-icon {
+      color: #FF9A9E;
+      margin-right: 12px;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-br from-blue-50 to-blue-50 backdrop-blur-lg rounded-3xl p-8 sm:p-12 md:p-16 mb-12 animate__animated animate__fadeIn">
+      <div class="text-center">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+          <span class="gradient-text">NutriMeal</span>
+        </h1>
+        <p class="text-xl sm:text-2xl text-blue-700/80 font-medium mb-8">Meal Orchestrator</p>
+
+        <div class="flex flex-wrap justify-center gap-6 sm:gap-10 mt-10">
+          <div class="text-center">
+            <p class="text-sm font-semibold text-blue-700/70 tracking-wider mb-1">DURATION</p>
+            <p class="text-lg font-bold text-blue-900">Ongoing</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm font-semibold text-blue-700/70 tracking-wider mb-1">TARGET</p>
+            <p class="text-lg font-bold text-blue-900">Families</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm font-semibold text-blue-700/70 tracking-wider mb-1">METHODS</p>
+            <p class="text-lg font-bold text-blue-900">User Research</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm font-semibold text-blue-700/70 tracking-wider mb-1">INTERVIEWS</p>
+            <p class="text-lg font-bold text-blue-900">12 Families</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Introduction -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-12 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-utensils text-blue-500 mr-3"></i>
+          Introduction
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <p class="text-gray-600 mb-6">The NUTRIMEAL app caters to busy families seeking efficient meal planning solutions,
+helping them optimize their time and dietary differences while ensuring healthy eating habits. It addresses the challenges of coordinating family meals while meeting individual nutritional needs.</p>
+
+      <div class="bg-blue-50 rounded-xl px-6 py-5 mb-8 border-l-4 border-blue-300">
+        <p class="font-semibold text-blue-800 mb-1">Project Vision:</p>
+        <p class="text-gray-700">To create an intuitive platform that simplifies meal planning, grocery shopping, and nutrition tracking for busy families, promoting healthier eating, food efficiency, and improved well-being across generations..</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/Nutimeal.jpg" alt="Nutrimeal App Interface" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold"> App Interface</span>
+          </div>
+        </div>
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/Nutrimeal-family.jpg" alt="Service Booking Flow" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Service Booking Flow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Problem Statement -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-12 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-question-circle pet-icon"></i>
+          Problem Statement
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <p class="text-gray-600 mb-8">Modern families often struggle to plan nutritious, balanced meals that meet the varying dietary needs of all members. Factors such as food allergies, age-specific nutrition, personal preferences, time constraints, and budget limitations make meal planning complex. There’s a lack of simple, accessible tools that can assist families in making optimized food choices without the need for multiple meals or extensive planning effort. Existing tools fail to address the nutritional complexities of multi-user households and they lack cultural adaptability, cross-generational tracking, and waste reduction features, leaving caregivers overwhelmed by fragmented solutions</p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div>
+          <h3 class="text-xl font-bold text-blue-800 mb-4 flex items-center">
+            <i class="fas fa-exclamation-triangle pet-icon"></i>
+            Opportunity Identification
+          </h3>
+          <div class="bg-white rounded-lg p-4 shadow-xs border border-gray-100">
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+              <li>Lack of tools for family-wide meal planning</li>
+              <li>No apps addressing nutrition deficiencies</li>
+              <li>Poor integration with grocery APIs and inventory tracking</li>
+              <li>No intelligent assistants to help with real-time nutrition planning and smart substitutions</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-blue-800 mb-4 flex items-center">
+            <i class="fas fa-chart-line pet-icon"></i>
+            Market Opportunity
+          </h3>
+          <div class="bg-white rounded-lg p-4 shadow-xs border border-gray-100">
+            <p class="text-gray-600">Indian online Food & Health Market Landscape (2024–2027) states that the Nutrition tech platforms like HealthifyMe & CureFit raised over ₹800 Cr combined in recent years, signaling growing investor interest.The healthy meal delivery market was ~₹3.1B in 2023 are expected to increase by ~₹7B+ by 2027.Meal planning/nutrition tracking apps globally see high user churn due to lack of personalization—opportunity for retention via AI and Indianized features. </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-blue-50 rounded-xl px-6 py-5 border-l-4 border-blue-300">
+        <p class="font-semibold text-blue-800 mb-1">Target Segments</p>
+        <p class="text-gray-700">Urban nuclear & multigenerational families, Working parents balancing time and health,Households managing food allergies, nutrient needs</p>
+      </div>
+    </div>
+
+    <!-- User Persona -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-12 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-user pet-icon"></i>
+          User Persona
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div class="bg-blue-50/70 rounded-xl p-6">
+          <div class="flex items-center mb-3">
+            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+              <i class="fas fa-user text-blue-500"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-blue-800">Priya Menon, IT Project Manager</p>
+              <p class="text-xs text-blue-600">Family with husband and two kids</p>
+            </div>
+          </div>
+          
+          <h4 class="text-lg font-bold text-blue-800 mt-4 flex items-center">
+            <i class="fas fa-bullseye mr-2"></i>
+            Goals
+          </h4>
+          <ul class="text-sm text-gray-600 space-y-2 mt-2">
+            <li class="flex items-start">
+              <i class="fas fa-check text-xs text-blue-500 mr-2 mt-1"></i>
+              <span>Planning meals for diverse family needs</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check text-xs text-blue-500 mr-2 mt-1"></i>
+              <span>Save the effective and busy time</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check text-xs text-blue-500 mr-2 mt-1"></i>
+              <span>Ensure nutritional balance</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check text-xs text-blue-500 mr-2 mt-1"></i>
+              <span>Healthy versions of familiar or Indian meals</span>
+            </li>
+          </ul>
+          
+          <h4 class="text-lg font-bold text-blue-800 mt-6 flex items-center">
+            <i class="fas fa-exclamation-circle mr-2"></i>
+            Pain Points
+          </h4>
+          <ul class="text-sm text-gray-600 space-y-2 mt-2">
+            <li class="flex items-start">
+              <i class="fas fa-times text-xs text-red-400 mr-2 mt-1"></i>
+              <span>Dietary Complexity: Balancing low-sugar, high-protein, and soft-textured meals</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-times text-xs text-red-400 mr-2 mt-1"></i>
+              <span>Time-Intensive Research: Cross-verifying recipes for allergies and nutrients</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-times text-xs text-red-400 mr-2 mt-1"></i>
+              <span>Inventory Mismanagement: The struggle to maintain hand written grocery list and groceries purchased go unused</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-times text-xs text-red-400 mr-2 mt-1"></i>
+              <span>Nutrition Ignorance: Lack of knowledge on nutritionally balanced meals. Overwhelmed by too many recipe choices without clear guidance</span>
+            </li>
+          
+          </ul>
+        </div>
+        
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/nutrimeal-userpersona.jpg" alt="User Persona Visualization" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">User Persona Visualization</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solution -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-12 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-lightbulb pet-icon"></i>
+          The Nutrimeal Solution
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <p class="text-gray-600 mb-8">NutriMeal focuses on solving core pain points in family meal planning by offering essential features like family profile management, simple meal and grocery planning, a basic nutrition dashboard, and AI-generated meal suggestions</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        <div class="bg-blue-50/70 rounded-xl p-6 hover:shadow-md transition-all duration-300">
+          <div class="text-3xl mb-3 text-blue-500 flex items-center">
+            <i class="fas fa-user-md mr-2"></i>
+            Family Profiles
+          </div>
+          <p class="text-sm text-gray-600"></p>Track age, allergies, and preferences per member and save the knowledge base of family members</p>
+        </div>
+        <div class="bg-blue-50/70 rounded-xl p-6 hover:shadow-md transition-all duration-300">
+          <div class="text-3xl mb-3 text-blue-500 flex items-center">
+            <i class="fas fa-utensils mr-2"></i>
+            Daily/Weekly meal planner
+          </div>
+          <p class="text-sm text-gray-600">Assign 3 time meals-breakfast, lunch, dinner to whole family, healthy and nutritional meals are generated through AI, in sync with grocery lists</p>
+        </div>
+        <div class="bg-yellow-50/70 rounded-xl p-6 hover:shadow-md transition-all duration-300">
+          <div class="text-3xl mb-3 text-yellow-500 flex items-center">
+            <i class="fas fa-utensils mr-2"></i>
+            Recipe Library
+          </div>
+          <p class="text-sm text-gray-600">Filter by cuisine (North/South Indian), prep time, and diet</p>
+        </div>
+        <div class="bg-purple-50/70 rounded-xl p-6 hover:shadow-md transition-all duration-300">
+          <div class="text-3xl mb-3 text-purple-500 flex items-center">
+            <i class="fas fa-shopping-cart mr-2"></i>
+            Integration with grocery apps
+          </div>
+          <p class="text-sm text-gray-600">Options for connecting with plugin for grocery apps.Options to track inventory and purchases-either through physical/online store </p>
+        </div>
+        <div class="bg-green-50/70 rounded-xl p-6 hover:shadow-md transition-all duration-300">
+          <div class="text-3xl mb-3 text-green-500 flex items-center">
+            <i class="fas fa-chart-pie mr-2"></i>
+            Nutrition Dashboard
+          </div>
+          <p class="text-sm text-gray-600">Visualize macros/micronutrients per meal; alert for gaps </p>
+        </div>
+        <div class="bg-indigo-50/70 rounded-xl p-6 hover:shadow-md transition-all duration-300">
+          <div class="text-3xl mb-3 text-indigo-500 flex items-center">
+            <i class="fas fa-robot mr-2"></i>
+            AI Assistant
+          </div>
+          <p class="text-sm text-gray-600">Easy resolution of your doubts</p>
+        </div>
+      </div>
+
+       <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/images/finding1.png" alt="Service Integration" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Service Integration</span>
+          </div>
+        </div>
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/images/finding2.png" alt="User Flow" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">User Flow</span>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <!-- Use cases -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-12 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-paint-brush pet-icon"></i>
+          Use Case Diagram
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <p class="text-gray-600 mb-8">The several use cases is as follows</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/Nutri-usecases.jpg" alt="Onboarding Flow" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Use cases</span>
+          </div>
+        </div></div>
+    <!-- UX Mockup -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-12 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-paint-brush pet-icon"></i>
+          UX Design
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <p class="text-gray-600 mb-8">The UX flow prioritizes a web application for meal planning,grocery management and nutritional tracking</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/nutri-wireframe.jpg" alt="Onboarding Flow" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Wireframe Steches</span>
+          </div>
+        </div></div>
+        <!-- <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/images/ux2.png" alt="Service Booking" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Service Booking</span>
+          </div>
+        </div>
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/images/ux3.png" alt="Pet Profile" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Pet Profile</span>
+          </div>
+        </div>
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/images/ux4.png" alt="Marketplace" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Marketplace</span>
+          </div>
+        </div> 
+      </div>-->
+
+      <div class="mt-8 text-center">
+        <a href="https://motiff.com/proto/qEqiyak8aUGMMMq5Vijej69?nodeId=202%3A541&pageId=0%3A1&startingPointNodeId=202%3A541&scaling=min-zoom "NUTRIMEAL PLANNER-Web UI Screens"" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-500 text-white rounded-full font-medium shadow-lg transform transition-all hover:scale-105 hover:shadow-xl" target="_blank">
+          <i class="fab fa-figma mr-2"></i>
+          View Design Prototype
+        </a>
+      </div>
+    </div>
+    <!-- MVP -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-12 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-rocket pet-icon"></i>
+          Minimum Viable Product
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div>
+          <h3 class="text-xl font-bold text-blue-800 mb-4 flex items-center">
+            <i class="fas fa-check-circle pet-icon"></i>
+            MVP Features
+          </h3>
+          <div class="bg-white rounded-lg p-4 shadow-xs border border-gray-100">
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+              <li>Family profile and prefernces</li>
+              <li>Daily Meal planner</li>
+              <li>Recie Library</li>
+              <li>Nutritional dashboard</li>
+              <li>Grocery Management</li>
+              <li>Interactive Widgets & Visual Feedback</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-blue-800 mb-4 flex items-center">
+            <i class="fas fa-chart-pie pet-icon"></i>
+            Marketing Model
+          </h3>
+          <div class="bg-white rounded-lg p-4 shadow-xs border border-gray-100">
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+              
+              <li>Premium subscription for advanced features</li>
+              <li>WhatsApp & SMS marketing for local user base engagement</li>
+              <li>Affiliate programs with gyms, dietitians, health platforms</li>
+              <li>Google & Meta Ads for new customer acquisition</li>
+              <li>Email Automation for retention and upselling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POC -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-12 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-paint-brush pet-icon"></i>
+          Proof of Concept
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <p class="text-gray-600 mb-8">The UX flow prioritizes a web application for meal planning,grocery management and nutritional tracking</p>
+
+      <!--<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/images/ux1.png" alt="Onboarding Flow" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Onboarding Flow</span>
+          </div>
+        </div>
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/images/ux2.png" alt="Service Booking" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Service Booking</span>
+          </div>
+        </div>
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/images/ux3.png" alt="Pet Profile" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Pet Profile</span>
+          </div>
+        </div>
+        <div class="image-hover-wrapper rounded-xl overflow-hidden">
+          <img src="./assets/images/images/ux4.png" alt="Marketplace" class="w-full h-auto rounded-xl">
+          <div class="image-overlay flex items-center justify-center">
+            <span class="text-white text-lg font-semibold">Marketplace</span>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="mt-8 text-center">
+        <a href="https://nutri-meal.vercel.app/" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-500 text-white rounded-full font-medium shadow-lg transform transition-all hover:scale-105 hover:shadow-xl" target="_blank">
+          <i class="fab fa-figma mr-2"></i>
+          View Proof of Concept
+        </a>
+      </div>
+    </div>
+
+    <!-- Market Fit -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 animate__animated animate__fadeIn animate__delay-1s">
+      <div class="flex items-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-900 flex items-center">
+          <i class="fas fa-chart-line pet-icon"></i>
+          Product Market Fit 
+        </h2>
+        <div class="divider ml-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div class="bg-blue-100 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold gradient-text mb-2">Target audience</div>
+          <p class="text-sm text-gray-700">Urban nuclear families,Working parents with children,Multi-generational households,Health-conscious individuals managing diverse dietary needs at home
+</p>
+        </div>
+        <div class="bg-blue-100 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold gradient-text-secondary mb-2">Primary Needs Fulfilled</div>
+          <p class="text-sm text-gray-700">o	Easy, family-wide meal planning in one go,Smart suggestions that respect allergies, preferences, and nutrition,Grocery list automation and inventory tracking,Balanced, healthy, and regionally familiar recipes,Visual feedback and alerts on nutrition gaps.
+</p>
+        </div>
+        <div class="bg-purple-100 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold text-purple-600 mb-2">Core Problems Solved</div>
+          <p class="text-sm text-gray-700">Complexity of planning meals for multiple family members,Less time-consuming recipe and nutrition research,Grocery management,Nutrition guidance
+</p>
+        </div>
+        <div class="bg-green-100 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold text-green-600 mb-2">Strong Fit In</div>
+          <p class="text-sm text-gray-700">Urban middle-class families looking for health and efficiency, people actively trying to improve diet quality at home</p>
+        </div>
+      </div>
+
+      <div class="bg-blue-50 rounded-xl px-6 py-5">
+        <p class="font-semibold text-blue-800 mb-1">Unique Value Proposition:</p>
+        <p class="text-gray-700"> A unique Household Nutrition Orchestrator generating single meal meeting all member's needs facilitating single account with flexibility to include 5 sub-profiles with Smart Substitution/Suggestion Engine-Detects allergens and suggests swaps. This interface also provides nutritional insights and are integrated with grocery apps for inventory management</p>
+      </div>
+    </div>
+      <!-- Call to Action -->
+        <div class="mt-8 text-center">
+            
+                <a href="index.html#projects" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-500 text-white rounded-full font-medium shadow-lg transform transition-all hover:scale-105 hover:shadow-xl" >
+                    Back to Projects
+                </a>
+            </div>
+        
+
+  </div>
+
+  <script>
+    // Simple animation for headings
+    document.querySelectorAll('.heading').forEach(heading => {
+      heading.addEventListener('mouseenter', () => {
+        heading.style.transform = 'translateY(-2px)';
+      });
+      heading.addEventListener('mouseleave', () => {
+        heading.style.transform = '';
+      });
+    });
+    
+    // Fade in animation for cards
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach((card, index) => {
+      card.style.transitionDelay = `${index * 0.1}s`;
+    });
+  </script>
+</body>
+</html>
